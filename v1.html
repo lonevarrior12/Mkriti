@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Apology ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .image-container {
+            position: relative;
+            width: 300px;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 6px;
+            border-radius: 0 0 12px 12px;
+        }
+
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            width: 95%;
+            max-width: 520px;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 12px;
+            width: 85%;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            margin: 10px 5px;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ff4d6d;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: transform 0.15s ease, background 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #e63956;
+            transform: scale(1.05);
+        }
+
+        .secondary {
+            background-color: #aaa;
+        }
+
+        .page {
+            display: none;
+        }
+
+        img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 8px 0;
+        }
+
+        /* Popup box */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-box {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 420px;
+            text-align: center;
+            animation: popIn 0.25s ease;
+            position: relative;
+        }
+
+        /* Surprise image after 3 No clicks */
+        #noSurprise {
+            display: none;
+            margin-top: 10px;
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="container">
+        <h1>Secret Entry ❤️</h1>
+        <p>Only for someone very special</p>
+        <input type="password" id="passwordInput" placeholder="Enter password">
+        <br>
+        <button onclick="checkPassword()">Unlock</button>
+    </div>
+
+    <!-- Main Sorry Page -->
+    <div id="sorryPage" class="container page">
+        <h1>I Messed Up 😔 but, </h1>
+
+        <!-- Replace with your cute pics/gifs -->
+        <!-- <img src="./images/sprinklr.png" alt="Cute 1"> -->
+        <div class="image-container">
+            <img src="./images/sprinklr.png" alt="Cute 1">
+            <div class="caption">Congratulations Minnuu...</div>
+        </div>
+
+        <!-- <img src="./images/happy.png" alt="Memory"> -->
+
+        <p>
+            I’m really, really sorry. You’re too important to me to let
+            one mistake ruin our smiles.
+        </p>
+
+        <button onclick="openPopup()">Read My Apology</button>
+    </div>
+
+    <!-- Accepted Page -->
+    <div id="acceptedPage" class="container page">
+        <h1>Thank You ❤️</h1>
+
+        <!-- Replace with favorite pic -->
+        <div class="image-container">
+            <img src="./images/happy.png" alt="Favorite">
+            <div class="caption">Thank U.. Call me... ❤️</div>
+        </div>
+
+        <p>
+            Thank you for forgiving me. I promise more laughs,
+            fewer mistakes, and unlimited love, flowers and giftss.
+        </p>
+
+        <button onclick="showPage('loginPage')">Start Over</button>
+    </div>
+
+    <!-- Popup Warning Box -->
+    <div id="popup" class="popup">
+        <div class="popup-box">
+            <h2>⚠ Important Message</h2>
+
+            <!-- Replace with cute gif -->
+            <img src="./images/sorryPintrest.png" alt="Sorry Gif">
+
+            <p>
+                I’m officially, formally, respectfully apologizing with full heart(Kriti).
+                Sorry Minnuu Bangaram, Sorry Sorry sorry sorryyyy....
+                Do you accept my sorry?
+            </p>
+
+            <button onclick="acceptSorry()">Yes, I forgive you ❤️</button>
+            <button class="secondary" onclick="moveNoButton(this)">No 😜</button>
+
+            <!-- Surprise image after 3 No clicks -->
+            <div class="image-container">
+                <img id="noSurprise" src="./images/disappoint.png" alt="Surprise">
+                <!-- <div class="caption">Aithe BreakUPPP... ❤️</div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Wrong Password Page -->
+    <div id="wrongPage" class="container page">
+        <h1>Access Denied 😅</h1>
+        <p>This apology is reserved for one person only.</p>
+        <button onclick="showPage('loginPage')">Try Again</button>
+    </div>
+
+    <script>
+        // Change passwords here
+        const correctPassword = "love123";
+        const altPassword = "special";
+
+        // Counter for "No" clicks
+        let noClickCount = 0;
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            if (input === correctPassword) {
+                showPage('sorryPage');
+            } else if (input === altPassword) {
+                showPage('acceptedPage');
+            } else {
+                showPage('wrongPage');
+            }
+        }
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.container');
+            pages.forEach(p => p.style.display = 'none');
+            document.getElementById(pageId).style.display = 'block';
+        }
+
+        function openPopup() {
+            document.getElementById('popup').style.display = 'flex';
+            noClickCount = 0;
+            document.getElementById('noSurprise').style.display = 'none';
+        }
+
+        function acceptSorry() {
+            document.getElementById('popup').style.display = 'none';
+            showPage('acceptedPage');
+        }
+
+        // Funny moving "No" button + surprise after 3 clicks
+        function moveNoButton(btn) {
+            noClickCount++;
+
+            const x = Math.random() * 200 - 100;
+            const y = Math.random() * 200 - 100;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+
+            if (noClickCount >= 3) {
+                document.getElementById('noSurprise').style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
